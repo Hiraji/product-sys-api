@@ -95,7 +95,6 @@
 						<region>us-east-1</region>
 						<workers>1</workers>
 						<workerType>MICRO</workerType>
-						<objectStoreV2>true</objectStoreV2>
 						<properties>
 							<anypoint.platform.analytics_base_uri>https://analytics-ingest.anypoint.mulesoft.com/</anypoint.platform.analytics_base_uri>
 							<anypoint.platform.base_uri>https://anypoint.mulesoft.com/</anypoint.platform.base_uri>
