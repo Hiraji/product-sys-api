@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.mycompany</groupId>
+	<artifactId>product-api</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>mule-application</packaging>
+
+	<name>product-api</name>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+		<app.runtime>4.4.0-20230417</app.runtime>
+		<mule.maven.plugin.version>3.8.2</mule.maven.plugin.version>
+	</properties>
+
+	<profiles>
+		<profile>
+			<id>dev</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.mule.tools.maven</groupId>
+						<artifactId>mule-maven-plugin</artifactId>
+						<version>${mule.maven.plugin.version}</version>
+						<extensions>true</extensions>
+						<configuration>
+							<cloudHubDeployment>
+								<applicationName>product-sys-api-dev</applicationName>
+								<environment>dev</environment>
+								<properties>
+									<http.port>8081</http.port>
+									<env>dev</env>
+									<api.id>18737965</api.id>
+									<anypoint.platform.client_id>360c29cb232749859bbbeab92a976be4</anypoint.platform.client_id>
+									<anypoint.platform.client_secret>71d8b5BcE286451F9DC3bf7943A82554</anypoint.platform.client_secret>
+								</properties>
+							</cloudHubDeployment>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>test</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.mule.tools.maven</groupId>
+						<artifactId>mule-maven-plugin</artifactId>
+						<version>${mule.maven.plugin.version}</version>
+						<extensions>true</extensions>
+						<configuration>
+							<cloudHubDeployment>
+								<applicationName>product-sys-api-test</applicationName>
+								<environment>test</environment>
+								<properties>
+									<http.port>8081</http.port>
+									<env>test</env>
+									<api.id>18734588</api.id>
+									<anypoint.platform.client_id>b821193d79cc47e99ff0bb900d6401c9</anypoint.platform.client_id>
+									<anypoint.platform.client_secret>7576a270f6E24E3bbadfB4219ef4ab86</anypoint.platform.client_secret>
+								</properties>
+							</cloudHubDeployment>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>3.2.0</version>
+			</plugin>
+			<plugin>
+				<groupId>org.mule.tools.maven</groupId>
+				<artifactId>mule-maven-plugin</artifactId>
+				<version>${mule.maven.plugin.version}</version>
+				<extensions>true</extensions>
+				<configuration>
+					<cloudHubDeployment>
+						<uri>https://anypoint.mulesoft.com</uri>
+						<muleVersion>${app.runtime}</muleVersion>
+						<username>Hiraji_surya</username>
+						<password>Heeraji@123</password>
+						<region>us-east-1</region>
+						<workers>1</workers>
+						<workerType>MICRO</workerType>
+						<objectStoreV2>true</objectStoreV2>
+						<properties>
+							<anypoint.platform.analytics_base_uri>https://analytics-ingest.anypoint.mulesoft.com/</anypoint.platform.analytics_base_uri>
+							<anypoint.platform.base_uri>https://anypoint.mulesoft.com/</anypoint.platform.base_uri>
+						</properties>
+					</cloudHubDeployment>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<dependencies>
+		<dependency>
+			<groupId>org.mule.connectors</groupId>
+			<artifactId>mule-http-connector</artifactId>
+			<version>1.7.3</version>
+			<classifier>mule-plugin</classifier>
+		</dependency>
+		<dependency>
+			<groupId>org.mule.connectors</groupId>
+			<artifactId>mule-sockets-connector</artifactId>
+			<version>1.2.3</version>
+			<classifier>mule-plugin</classifier>
+		</dependency>
+		<dependency>
+			<groupId>org.mule.modules</groupId>
+			<artifactId>mule-apikit-module</artifactId>
+			<version>1.8.4</version>
+			<classifier>mule-plugin</classifier>
+		</dependency>
+	</dependencies>
+
+	<repositories>
+		<repository>
+			<id>anypoint-exchange-v3</id>
+			<name>Anypoint Exchange</name>
+			<url>https://maven.anypoint.mulesoft.com/api/v3/maven</url>
+			<layout>default</layout>
+		</repository>
+		<repository>
+			<id>mulesoft-releases</id>
+			<name>MuleSoft Releases Repository</name>
+			<url>https://repository.mulesoft.org/releases/</url>
+			<layout>default</layout>
+		</repository>
+	</repositories>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>mulesoft-releases</id>
+			<name>MuleSoft Releases Repository</name>
+			<layout>default</layout>
+			<url>https://repository.mulesoft.org/releases/</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</pluginRepository>
+		<pluginRepository>
+			<id>mule-public</id>
+			<url>https://repository.mulesoft.org/nexus/content/repositories/releases</url>
+		</pluginRepository>
+
+	</pluginRepositories>
+
+</project>

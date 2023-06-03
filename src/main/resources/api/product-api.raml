@@ -1,0 +1,29 @@
+#%RAML 1.0
+title: product-api
+baseUri: http://localhost:8081/api/v1
+traits:
+  x-correlation-id: !include /exchange_modules/e6e02e9f-8ca0-442b-9a63-f10e3eff75d8/x-correlation-id-header/1.0.0/x-correlation-id-header.raml
+  x-transaction-id: !include /exchange_modules/e6e02e9f-8ca0-442b-9a63-f10e3eff75d8/x-transaction-id-header/1.0.0/x-transaction-id-header.raml
+securitySchemes:
+  basic-auth: !include /exchange_modules/e6e02e9f-8ca0-442b-9a63-f10e3eff75d8/basic-auth-security-scheme/1.0.0/basic-auth-security-scheme.raml
+/products:
+  get:
+    securedBy: [basic-auth]
+    is: [x-correlation-id, x-transaction-id]
+    responses:
+      200:
+        body:
+          application/json:
+            type: object
+            example: !include examples/products-api-response.json
+      400:
+        body:
+          application/json:
+            type: !include /exchange_modules/e6e02e9f-8ca0-442b-9a63-f10e3eff75d8/common-data-types/1.0.1/common-data-types.raml
+            example: !include examples/400.json
+      500:
+        body:
+          application/json:
+            type: !include /exchange_modules/e6e02e9f-8ca0-442b-9a63-f10e3eff75d8/common-data-types/1.0.1/common-data-types.raml
+            example: !include examples/500.json
+              
