@@ -69,10 +69,10 @@
 						<region>us-east-1</region>
 						<workers>1</workers>
 						<workerType>MICRO</workerType>
+						<deploymentTimeout>2000000</deploymentTimeout>
 						<properties>
 							<anypoint.platform.analytics_base_uri>https://analytics-ingest.anypoint.mulesoft.com/</anypoint.platform.analytics_base_uri>
 							<anypoint.platform.base_uri>https://anypoint.mulesoft.com/</anypoint.platform.base_uri>
-							<deploymentTimeout>2000000</deploymentTimeout>
 						</properties>
 					</cloudHubDeployment>
 				</configuration>
