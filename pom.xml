@@ -37,34 +37,8 @@
 									<http.port>8081</http.port>
 									<env>dev</env>
 									<api.id>18737965</api.id>
-									<anypoint.platform.client_id>360c29cb232749859bbbeab92a976be4</anypoint.platform.client_id>
-									<anypoint.platform.client_secret>71d8b5BcE286451F9DC3bf7943A82554</anypoint.platform.client_secret>
-								</properties>
-							</cloudHubDeployment>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-		<profile>
-			<id>test</id>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.mule.tools.maven</groupId>
-						<artifactId>mule-maven-plugin</artifactId>
-						<version>${mule.maven.plugin.version}</version>
-						<extensions>true</extensions>
-						<configuration>
-							<cloudHubDeployment>
-								<applicationName>product-sys-api-test</applicationName>
-								<environment>test</environment>
-								<properties>
-									<http.port>8081</http.port>
-									<env>test</env>
-									<api.id>18734588</api.id>
-									<anypoint.platform.client_id>b821193d79cc47e99ff0bb900d6401c9</anypoint.platform.client_id>
-									<anypoint.platform.client_secret>7576a270f6E24E3bbadfB4219ef4ab86</anypoint.platform.client_secret>
+									<anypoint.platform.client_id>${anypoint.platform.client_id}</anypoint.platform.client_id>
+									<anypoint.platform.client_secret>${anypoint.platform.client_secret}</anypoint.platform.client_secret>
 								</properties>
 							</cloudHubDeployment>
 						</configuration>
@@ -90,14 +64,15 @@
 					<cloudHubDeployment>
 						<uri>https://anypoint.mulesoft.com</uri>
 						<muleVersion>${app.runtime}</muleVersion>
-						<username>Hiraji_surya</username>
-						<password>Heeraji@123</password>
+						<username>${username}</username>
+						<password>${password}</password>
 						<region>us-east-1</region>
 						<workers>1</workers>
 						<workerType>MICRO</workerType>
 						<properties>
 							<anypoint.platform.analytics_base_uri>https://analytics-ingest.anypoint.mulesoft.com/</anypoint.platform.analytics_base_uri>
 							<anypoint.platform.base_uri>https://anypoint.mulesoft.com/</anypoint.platform.base_uri>
+							<deploymentTimeout>2000000</deploymentTimeout>
 						</properties>
 					</cloudHubDeployment>
 				</configuration>
